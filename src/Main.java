@@ -1,7 +1,11 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(hasSharedDigit(10, 99));
+        System.out.println(hasSharedDigit(80, 55));
+        System.out.println(hasSharedDigit(1, 55));
+        System.out.println(hasSharedDigit(88, 85));
+        System.out.println(hasSharedDigit(63, 35));
+
 
     }
 
@@ -20,14 +24,28 @@ public class Main {
 //            return false;
 //        }
 
-        while (num1 > 10 && num2 > 10) {
-            int remDigit1 = num1 % 10;
-            int remDigit2 = num2 % 10;
 
-            if (remDigit1 == remDigit2) {
-                return true;
-            }
-        }
-        return true;
+        int firstLeft = num1 / 10;
+        int firstRight = num1 % 10;
+        int secondLeft = num2 / 10;
+        int secondRight = num2 % 10;
+
+        boolean firstShared = firstLeft == secondLeft ||
+                              firstLeft == secondRight;
+
+        boolean secondShared = firstRight == secondLeft ||
+                firstRight == secondRight;
+
+
+        // ---- tried with a while loop -----
+//        while (num1 > 10 && num2 > 10) {
+//            int remDigit1 = num1 % 10;
+//            int remDigit2 = num2 % 10;
+//
+//            if (remDigit1 == remDigit2) {
+//                return true;
+//            }
+//        }
+        return firstShared || secondShared;
     }
 }
