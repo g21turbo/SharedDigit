@@ -11,6 +11,7 @@ public class Main {
 
     public static boolean hasSharedDigit(int num1, int num2) {
 
+        // input validation
         boolean firstValid = num1 > 9 && num1 < 100;
         boolean secondValid = num2 > 9 && num2 < 100;
 
@@ -18,34 +19,20 @@ public class Main {
             return false;
         }
 
-//    --------previous input validation-----------
-//        if (num1 < 10 || num1 > 99 ||
-//                num2 < 10 || num2 > 99) {
-//            return false;
-//        }
-
-
+        // assigns variables to each digit
         int firstLeft = num1 / 10;
         int firstRight = num1 % 10;
         int secondLeft = num2 / 10;
         int secondRight = num2 % 10;
 
+        // compares the digits
         boolean firstShared = firstLeft == secondLeft ||
                               firstLeft == secondRight;
 
         boolean secondShared = firstRight == secondLeft ||
                 firstRight == secondRight;
 
-
-        // ---- tried with a while loop -----
-//        while (num1 > 10 && num2 > 10) {
-//            int remDigit1 = num1 % 10;
-//            int remDigit2 = num2 % 10;
-//
-//            if (remDigit1 == remDigit2) {
-//                return true;
-//            }
-//        }
+        // uses the above booleans to return true or false if a digit matches
         return firstShared || secondShared;
     }
 }
